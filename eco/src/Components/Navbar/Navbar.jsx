@@ -9,10 +9,12 @@ function Navbar() {
    
         <ul className='menu-title'>
           <li onClick={()=>(setMenu("Home"))}><Link style={{textDecoration:'none'}} to='/'>Home</Link> {menu=="Home"?<hr/>:<></>}</li>
+
           <li onClick={()=>(setMenu("Dog"))}><Link style={{textDecoration:'none'}} to='/Dog'>Dog</Link> {menu=="Dog"?<hr/>:<></>}</li>
           <li onClick={()=>(setMenu("Cat"))}><Link style={{textDecoration:'none'}}  to='/Cat'>Cat</Link>{menu=="Cat"?<hr/>:<></>}</li>
           <li onClick={()=>(setMenu("Fish"))}><Link style={{textDecoration:'none'}}  to='/Fish'>Fish</Link> {menu=="Fish"?<hr/>:<></>}</li>
           <li onClick={()=>(setMenu("Birds"))}><Link style={{textDecoration:'none'}}  to='/Bird'>Birds</Link>{menu=="Birds"?<hr/>:<></>}</li>
+          <li onClick={()=>(setMenu("All"))}><Link style={{textDecoration:'none'}} to='/All'>All</Link> {menu=="All"?<hr/>:<></>}</li>
 
         </ul>
     </div>

@@ -1,0 +1,75 @@
+.displayProduct {
+    display: flex;
+    margin: 0px 170px;
+    flex-wrap: wrap; /* Ensure elements wrap on smaller screens */
+}
+
+.main-image {
+    width: 586px;
+    height: 700px;
+    object-fit: cover; /* Ensure the image covers the area properly */
+}
+
+.display-Right {
+    padding: 30px;
+}
+
+.display-Right h {
+    font-size: larger;
+    font-family: monospace;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .displayProduct {
+        margin: 0px 50px;
+    }
+
+    .main-image {
+        width: 400px; 
+        height: auto; 
+    }
+
+    .display-Right {
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .displayProduct {
+        margin: 0px 50px;
+    }
+
+    .main-image {
+        width: 300px; 
+        height: auto; 
+    }
+
+    .display-Right {
+        padding: 20px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .displayProduct {
+        margin: 0px 20px;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .main-image {
+        width: 100%; 
+        height: auto; 
+    }
+
+    .display-Right {
+        padding: 10px;
+        text-align: center; 
+    }
+
+    .display-Right h1 {
+        font-size: 1.5em;
+
+    .display-Right .details h2 {
+        font-size: 1.2em; 
+    }
+}
+}
