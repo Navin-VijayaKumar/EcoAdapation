@@ -24,7 +24,7 @@ const AllCategory = () => {
         >
           <option value="">All</option>
           <option value="Tamil Nadu">Tamil Nadu</option>
-          <option value="Karala">Karala</option>
+          <option value="Kerala">Kerala</option>
           <option value="State 3">State 3</option>
           <option value="State 4">State 4</option>
           <option value="State 5">State 5</option>

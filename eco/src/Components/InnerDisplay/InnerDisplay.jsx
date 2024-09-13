@@ -12,16 +12,31 @@ const InnerDisplay = (props) => {
         </div>
       </div>
       <div className="display-Right">
-        <h1>{product?.name}</h1>
-        <div className="details">
-          <h2>Category: {product?.category}</h2>
-          <h2>Age: {product?.age}</h2>
-          <h2>Address: {product?.address}</h2>
-          <h2>State: {product?.state}</h2>
-          <h2>Phone: {product?.PhoneNumber}</h2>
-          <h2>Email: {product?.Email}</h2>
-          <h2>District: {product?.District}</h2>
-        </div>
+      <div className="details">
+  <div className="details-item">
+    <h2>Category:</h2><p>{product?.category}</p>
+  </div>
+  <div className="details-item">
+    <h2>Age:</h2><p>{product?.age}</p>
+  </div>
+  <div className="details-item">
+    <h2>Address:</h2><p>{product?.address}</p>
+  </div>
+  <div className="details-item">
+    <h2>State:</h2><p>{product?.state}</p>
+  </div>
+  <div className="details-item">
+    <h2>Phone:</h2><p>{product?.PhoneNumber}</p>
+  </div>
+  <div className="details-item">
+    <h2>Email:</h2><p>{product?.Email}</p>
+  </div>
+  <div className="details-item">
+    <h2>District:</h2><p>{product?.District}</p>
+  </div>
+</div>
+
+      <button className='submit' disabled={true} value='submit'>Adopt</button>
       </div>
     </div>
   );
