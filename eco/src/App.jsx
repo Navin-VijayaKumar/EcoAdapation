@@ -6,6 +6,7 @@ import Pets from './Pages/Assets2/Pets';
 import PetsCategory from './Pages/Assets2/PetsCategory';
 import PetContextProvider from './PetContext/PetContextProvider'; // Import the provider
 import AllCategory from './Pages/AllCategory';
+import Login from './Login/Login';
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path='/' element={<Home />} />
+          <Route path="/" element={<Login />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/Dog' element={<PetsCategory category="dog" />} /> 
             <Route path='/Cat' element={<PetsCategory category="cat" />} />
             <Route path='/Fish' element={<PetsCategory category="Fish" />} />

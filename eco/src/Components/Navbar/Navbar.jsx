@@ -8,7 +8,7 @@ function Navbar() {
     <div className='all'>
    
         <ul className='menu-title'>
-          <li onClick={()=>(setMenu("Home"))}><Link style={{textDecoration:'none'}} to='/'>Home</Link> {menu=="Home"?<hr/>:<></>}</li>
+          <li onClick={()=>(setMenu("Home"))}><Link style={{textDecoration:'none'}} to='/home'>Home</Link> {menu=="Home"?<hr/>:<></>}</li>
 
           <li onClick={()=>(setMenu("Dog"))}><Link style={{textDecoration:'none'}} to='/Dog'>Dog</Link> {menu=="Dog"?<hr/>:<></>}</li>
           <li onClick={()=>(setMenu("Cat"))}><Link style={{textDecoration:'none'}}  to='/Cat'>Cat</Link>{menu=="Cat"?<hr/>:<></>}</li>
