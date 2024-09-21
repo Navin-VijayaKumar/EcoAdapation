@@ -1,166 +1,155 @@
-const port = 4000;
-const express=require("express");
-const app=express();
-const mongoose=require("mongoose");
-const jwt=require("jsonwebtoken");
+const express = require("express");
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
 const multer = require("multer");
-const path=require("path");
-const cors=require("cors");
+const path = require("path");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
 
- 
+const app = express();
+const port = 4000;
+
 app.use(express.json());
 app.use(cors());
 
+// MongoDB connection
+mongoose.connect("mongodb+srv://navinv:9788665770@cluster0.d9sg7.mongodb.net/details", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+});
 
-  
-mongoose.connect("mongodb+srv://navinv:9788665770@cluster0.d9sg7.mongodb.net/details")
+// Check MongoDB connection
+mongoose.connection.on("connected", () => {
+    console.log("Connected to MongoDB");
+});
 
+// Nodemailer transporter setup
+const transporter = nodemailer.createTransport({
+    service: 'gmail', // Change this if using a different email service
+    auth: {
+        user: 'navinv.22cse@kongu.edu',  // Replace with your email
+        pass: '9788665770',   // Replace with your email password or app-specific password
+    }
+});
 
-
-
-
-app.get("/",(req,res)=>{
-    res.send("express app is running")
-    console.log("express app is running");
-
-})
-// to store image
+// Multer storage for file uploads
 const storage = multer.diskStorage({
     destination: './upload/images',
     filename: (req, file, cb) => {
         return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
     }
 });
+const upload = multer({ storage: storage });
+app.use("/images", express.static('upload/images'));
 
-const upload =multer({storage:storage})
-//end point
-app.use("/images",express.static('upload/images'))
+// Root route
+app.get("/", (req, res) => {
+    res.send("express app is running");
+    console.log("express app is running");
+});
 
-app.post("/upload", upload.single('product'), (req, res) => {
-    res.json({
-        success: 1,
-        image_url: `http://localhost:${port}/images/${req.file.filename}`
+// Send Email Route
+app.post('/send-email', (req, res) => {
+    const { to, subject, text, productId } = req.body;  // Include productId in the request
+    console.log("Sending email to:", to);
+
+    // Mail options for the user
+    const mailOptionsUser = {
+        from: 'navinv.22cse@kongu.edu',
+        to,  // Email from the request
+        subject,
+        text,
+    };
+    
+    // Admin email configuration
+    //const adminEmail = 'navinv.22cse@kongu.edu';l
+    const mailOptionsAdmin = {
+        from: 'navinv.22cse@kongu.edu',
+        to:'navinv.22cse@kongu.edu',
+        subject: `New Adoption Inquiry for Product ID: ${productId}`,  // Email subject for admin
+        text: `An email has been sent to ${to} regarding their inquiry for product ID: ${productId}.`,  // Message for admin
+    };
+    console.log("dcwv");
+
+    // Send email to the user
+    transporter.sendMail(mailOptionsUser, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return res.status(500).json({ success: false, message: 'Error sending email', error });
+        }
+        console.log('Email sent to user:', info.response);
+
+        // Send notification email to the admin
+        transporter.sendMail(mailOptionsAdmin, (adminError, adminInfo) => {
+            if (adminError) {
+                console.error('Error sending notification email to admin:', adminError);
+                return res.status(500).json({ success: false, message: 'Error sending notification email', adminError });
+            }
+            console.log('Notification email sent to admin:', adminInfo.response);
+            res.json({ success: true, message: 'Email sent successfully' });
+        });
     });
 });
-//schema
 
 
- const Product=mongoose.model("Product",{
-    id:{
-        type:Number,
-        required:true,
-    },
-   name:{
-    type:String,
-    required:true,
+// Product Schema (assuming you have a schema like this in mongoose)
+const productSchema = new mongoose.Schema({
+    id: Number,
+    name: String,
+    category: String,
+    image: String,
+    age: String,
+    address: String,
+    state: String,
+    PhoneNumber: String,
+    Email: String,
+    District: String,
+});
 
+const Product = mongoose.model("Product", productSchema);
 
-   } ,
+// Add Product
+app.post('/addproduct', async (req, res) => {
+    let products = await Product.find({});
+    let id = products.length > 0 ? products[products.length - 1].id + 1 : 1;
 
-   category:{
-    type:String,
-    required:true,
-   },
-   image:{
-    type:String,
-    required:true,
-   } ,
-   age:{
-    type:Number,
-    required:true,
-},
-address:{
-    type:String,
-    required:true,
-},
-
-state:{
-    type:String,
-    required:true,
-},
-PhoneNumber:{
-    type:String,
-    required:true,
-},
-Email:{
-    type:String,
-    required:true,
-},
-District:{
-    type:String,
-    required:true,
-},
-
- })
- app.post('/addproduct',async (req,res)=>{
-    let products= await Product.find({});
-    let id;
-    if(products.length>0)
-    {
-        let last_product_array=products.slice(-1);
-        let last_product = last_product_array[0];
-        id=last_product.id+1;
-    }
-    else{
-        id=1;
-    }
-    const product= new Product({
-        
-// id: 1,
-//     name: "dog",
-//     category: "dog",
-//     image: ad1,
-//     age: "2",
-//     address: "abc",
-//     state: "Tamil Nadu",
-//     PhoneNumber: "000000000000",
-//     Email: "sample@gmail.com",
-//     District: "Erode",
-        id:id,
-        name:req.body.name,
-        category:req.body.category,
-        image:req.body.image,
-       age:req.body.age,
-       address:req.body.address,
-       state:req.body.state,
-       PhoneNumber:req.body.PhoneNumber,
-       Email:req.body.Email,
-       District:req.body.District,
-
-
+    const product = new Product({
+        id,
+        name: req.body.name,
+        category: req.body.category,
+        image: req.body.image,
+        age: req.body.age,
+        address: req.body.address,
+        state: req.body.state,
+        PhoneNumber: req.body.PhoneNumber,
+        Email: req.body.Email,
+        District: req.body.District,
     });
-  console.log(product);
-  await  product.save();
-  console.log("saved");
-  res.json({
-    success:true,
-    name:req.body.name,
 
+    await product.save();
+    console.log("Product saved:", product);
+    res.json({ success: true, name: req.body.name });
+});
 
-  })
+// Remove Product
+app.post('/removeproduct', async (req, res) => {
+    await Product.findOneAndDelete({ id: req.body.id });
+    console.log("Product removed:", req.body.id);
+    res.json({ success: true, id: req.body.id });
+});
 
- })
- app.post('/removeproduct',async (req,res)=>{
-    await Product.findOneAndDelete({id:req.body.id});
-    console.log("Removed");
-    res.json({
-      success:true,
-      name:req.body.name
-    })
- })
-
- app.get('/allproducts',async (req,res)=>{
+// Get All Products
+app.get('/allproducts', async (req, res) => {
     let products = await Product.find({});
     console.log("All products are displayed from database");
     res.send(products);
- })
-app.listen(port,(e)=>{
-    if (!e){
-        console.log("Server is running on the port:"+port);
+});
 
+// Start the server
+app.listen(port, (e) => {
+    if (!e) {
+        console.log("Server is running on port:", port);
+    } else {
+        console.error("Error starting server:", e);
     }
-    else{
-        console.log("Error on mongoDB connection"+e);
-    }
- 
-})
+});

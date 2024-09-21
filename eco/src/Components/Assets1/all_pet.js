@@ -13,7 +13,7 @@ let app_pet = [
     address: "abc",
     state: "Tamil Nadu",
     PhoneNumber: "000000000000",
-    Email: "sample@gmail.com",
+    Email: "navinv.22cse@kongu.edu",
     District: "Erode",
   },
   {
@@ -25,7 +25,7 @@ let app_pet = [
     address: "abc",
     state: "Kerala",
     PhoneNumber: "000000000000",
-    Email: "sample@gmail.com",
+    Email: "ragules.22cse@kongu.edu",
     District: "Palakkad",
   },
   {
@@ -37,7 +37,7 @@ let app_pet = [
     address: "abc",
     state: "Tamil Nadu",
     PhoneNumber: "000000000000",
-    Email: "sample@gmail.com",
+    Email: "navinv.22cse@kongu.edu",
     District: "Erode",
   },
   {
