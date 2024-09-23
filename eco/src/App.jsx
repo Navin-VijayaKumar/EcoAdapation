@@ -7,7 +7,7 @@ import PetsCategory from './Pages/Assets2/PetsCategory';
 import PetContextProvider from './PetContext/PetContextProvider'; // Import the provider
 import AllCategory from './Pages/AllCategory';
 import Login from './Login/Login';
-
+import Save_me from './Pages/Save_me/Save_me'
 function App() {
   return (
     <>
@@ -22,7 +22,7 @@ function App() {
             <Route path='/Fish' element={<PetsCategory category="Fish" />} />
             <Route path='/Bird' element={<PetsCategory category="Birds" />} />
             <Route path='/All' element={<AllCategory />} />
-
+            <Route path='/Save_me' element={<Save_me />} />
             <Route path="/pets/:productID" element={<Pets />} />
           </Routes>
         </BrowserRouter>

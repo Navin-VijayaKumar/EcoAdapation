@@ -48,7 +48,7 @@ const RemoveProduct = () => {
 
   return (
     <div className="listproduct">
-      <h1>All Products List</h1>
+      <h1>All Pet List</h1>
       {error && <p className="error-message">{error}</p>} {/* Display any errors */}
       <div className="listproduct-format-main">
         {/* <p>Name</p> */}

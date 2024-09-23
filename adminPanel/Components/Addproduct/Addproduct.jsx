@@ -71,7 +71,7 @@ const AddProduct = () => {
   
       
         <div className="addproduct-field">
-          <p>Product ID</p>
+          <p>Pet ID</p>
           <input
             value={productDetails.id}
             onChange={changeHandler}
@@ -82,7 +82,7 @@ const AddProduct = () => {
         </div>
   
         <div className="addproduct-field">
-          <p>Product Name</p>
+          <p>Pet Name</p>
           <input
             value={productDetails.name}
             onChange={changeHandler}

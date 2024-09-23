@@ -12,23 +12,22 @@ const port = 4000;
 app.use(express.json());
 app.use(cors());
 
-// MongoDB connection
+
 mongoose.connect("mongodb+srv://navinv:9788665770@cluster0.d9sg7.mongodb.net/details", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
 
-// Check MongoDB connection
+
 mongoose.connection.on("connected", () => {
     console.log("Connected to MongoDB");
 });
 
-// Nodemailer transporter setup
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Change this if using a different email service
+    service: 'gmail', 
     auth: {
-        user: 'navinv.22cse@kongu.edu',  // Replace with your email
-        pass: '9788665770',   // Replace with your email password or app-specific password
+        user: 'navinv.22cse@kongu.edu',
+        pass: '9788665770',  
     }
 });
 
@@ -41,6 +40,16 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 app.use("/images", express.static('upload/images'));
+app.post('/upload', upload.single('product'), (req, res) => {
+    if (req.file) {
+        // If the upload is successful, return the image URL
+        const image_url = `http://localhost:4000/images/${req.file.filename}`;
+        return res.json({ success: true, image_url });
+    } else {
+        return res.status(400).json({ success: false, message: "Image upload failed" });
+    }
+});
+
 
 // Root route
 app.get("/", (req, res) => {
@@ -50,10 +59,10 @@ app.get("/", (req, res) => {
 
 // Send Email Route
 app.post('/send-email', (req, res) => {
-    const { to, subject, text, productId } = req.body;  // Include productId in the request
+    const { to, subject, text, productId } = req.body;  
     console.log("Sending email to:", to);
 
-    // Mail options for the user
+   
     const mailOptionsUser = {
         from: 'navinv.22cse@kongu.edu',
         to,  // Email from the request
@@ -66,8 +75,8 @@ app.post('/send-email', (req, res) => {
     const mailOptionsAdmin = {
         from: 'navinv.22cse@kongu.edu',
         to:'navinv.22cse@kongu.edu',
-        subject: `New Adoption Inquiry for Product ID: ${productId}`,  // Email subject for admin
-        text: `An email has been sent to ${to} regarding their inquiry for product ID: ${productId}.`,  // Message for admin
+        subject: `New Adoption for a per order has been placed, for PET ID: ${productId}`,
+        text: `An order has been sent to ${to} regarding pet adaption and the PET ID: ${productId}.`, 
     };
     console.log("dcwv");
 

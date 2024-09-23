@@ -7,21 +7,21 @@ const InnerDisplay = (props) => {
   const [emailBody, setEmailBody] = useState('');
 
   const handleAdoptClick = () => {
-    setShowPopup(true); // Show popup when adopt button is clicked
+    setShowPopup(true);
   };
 
   const handleSendEmail = () => {
-    // Here you will call the email sending logic
+   
     sendEmail();
-    setShowPopup(false); // Close popup after sending email
+    setShowPopup(false);
   };
 
   const sendEmail = async () => {
     const emailData = {
-        to: product.Email,  // User's email
+        to: product.Email,  
         subject: 'Adoption Inquiry',
         text: emailBody,
-        productId: product.id,  // Include product ID for the admin notification
+        productId: product.id, 
     };
 
     try {
