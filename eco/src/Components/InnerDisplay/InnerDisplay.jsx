@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './InnerDisplay.css';
 
 const InnerDisplay = (props) => {
-  const { product } = props;
+  const { product } = props; 
   const [showPopup, setShowPopup] = useState(false);
   const [emailBody, setEmailBody] = useState('');
 
@@ -10,35 +10,30 @@ const InnerDisplay = (props) => {
     setShowPopup(true);
   };
 
-  const handleSendEmail = () => {
-   
-    sendEmail();
-    setShowPopup(false);
-  };
-
-  const sendEmail = async () => {
+  const handleSendEmail = async () => {
     const emailData = {
-        to: product.Email,  
-        subject: 'Adoption Inquiry',
-        text: emailBody,
-        productId: product.id, 
+      to: product?.Email,  
+      subject: 'Adoption Inquiry',
+      text: emailBody,
+      productId: product?.id, 
     };
 
     try {
-        await fetch('http://localhost:4000/send-email', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(emailData),
-        });
-        alert('Email sent successfully!');
+      await fetch('http://localhost:4000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
+      });
+      alert('Email sent successfully!');
     } catch (error) {
-        console.error('Error sending email:', error);
-        alert('Failed to send email.');
+      console.error('Error sending email:', error);
+      alert('Failed to send email.');
     }
-};
 
+    setShowPopup(false);
+  };
 
   return (
     <div className="displayProduct">
@@ -83,16 +78,15 @@ const InnerDisplay = (props) => {
           <div className="popup-content">
             <h3>Pet Ordering Details</h3>
             <h4>It should contain the following details</h4>
-            <li>pick up date,contact number,pet id</li>
+            <li>Pick up date, contact number, pet ID</li>
             <textarea
               placeholder="Write your message here..."
               value={emailBody}
               onChange={(e) => setEmailBody(e.target.value)}
             />
             <div className="button">
-
-            <button className='b1' onClick={handleSendEmail}>Place Order</button>
-            <button children='b2' onClick={() => setShowPopup(false)}>Cancel</button>
+              <button className='b1' onClick={handleSendEmail}>Place Order</button>
+              <button className='b2' onClick={() => setShowPopup(false)}>Cancel</button>
             </div>
           </div>
         </div>

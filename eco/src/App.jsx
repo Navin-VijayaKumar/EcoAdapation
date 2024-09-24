@@ -19,8 +19,8 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/Dog' element={<PetsCategory category="dog" />} /> 
             <Route path='/Cat' element={<PetsCategory category="cat" />} />
-            <Route path='/Fish' element={<PetsCategory category="Fish" />} />
-            <Route path='/Bird' element={<PetsCategory category="Birds" />} />
+            <Route path='/Fish' element={<PetsCategory category="fish" />} />
+            <Route path='/Bird' element={<PetsCategory category="bird" />} />
             <Route path='/All' element={<AllCategory />} />
             <Route path='/Save_me' element={<Save_me />} />
             <Route path="/pets/:productID" element={<Pets />} />

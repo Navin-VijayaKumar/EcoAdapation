@@ -1,11 +1,11 @@
 .slider{
     display: flex;
     flex-direction: column;
-    padding-top: 30px;
+    /* padding-top: 30px; */
     gap: 20px;
     width: 100%;
     max-width: 250%;
-    height: 100vh;
+    height: 50vh;
     background: white;
 
 }

@@ -33,22 +33,45 @@ const transporter = nodemailer.createTransport({
 
 // Multer storage for file uploads
 const storage = multer.diskStorage({
-    destination: './upload/images',
+    destination: (req, file, cb) => {
+        cb(null, './upload/images');  // Set the destination folder for image uploads
+    },
     filename: (req, file, cb) => {
-        return cb(null, `${file.fieldname}_${Date.now()}${path.extname(file.originalname)}`);
+        // Use a unique filename format: image_<timestamp>.<ext>
+        cb(null, `image_${Date.now()}${path.extname(file.originalname)}`);
     }
 });
-const upload = multer({ storage: storage });
+
+// File filter to only allow specific image formats (e.g., .png, .jpg, .jpeg)
+const fileFilter = (req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png|gif/;
+    const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
+    const mimeType = fileTypes.test(file.mimetype);
+
+    if (extname && mimeType) {
+        cb(null, true);  // Accept file
+    } else {
+        cb(new Error('Only image files are allowed!'), false);  // Reject file
+    }
+};
+
+const upload = multer({
+    storage: storage,
+    limits: { fileSize: 2 * 1024 * 1024 },  // 2 MB file size limit
+    fileFilter: fileFilter,
+});
+
 app.use("/images", express.static('upload/images'));
-app.post('/upload', upload.single('product'), (req, res) => {
+
+app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
-        // If the upload is successful, return the image URL
         const image_url = `http://localhost:4000/images/${req.file.filename}`;
         return res.json({ success: true, image_url });
     } else {
         return res.status(400).json({ success: false, message: "Image upload failed" });
     }
 });
+
 
 
 // Root route

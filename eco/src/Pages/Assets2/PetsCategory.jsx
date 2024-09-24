@@ -4,36 +4,28 @@ import Items from '../../Components/Items/Items';
 import './PetCategory.css';
 
 const PetsCategory = ({ category }) => {
-  const { all_pet } = useContext(PetContext);
+  const { all_product } = useContext(PetContext); // Use all_product
 
   return (
     <div className="shop-product">
-       
-      {all_pet && all_pet.map((item, i) => {
-        
-
-     
+      {all_product && all_product.map((item, i) => {  // Use all_product instead of all_pet
         if (category === item.category) {
           return (
             <div key={i} className="item-box">
-              <Items id={item.id} name={item.name} image={item.image} age={item.age} state={item.state}  District={item.District}/>
-
+              <Items 
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                age={item.age}
+                state={item.state}
+                District={item.District}
+              />
             </div>
-              
           );
-          
-        }
-        else{
+        } else {
           return null;
         }
-      
-          
-       
-        
-        
-      }
-      
-    )}
+      })}
     </div>
   );
 };

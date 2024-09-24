@@ -24,8 +24,14 @@
       grid-template-columns: 1fr; 
     }
   }
-  
-  
+  .shop-product img{
+    /* height: 350px;
+    width: 240px; */
+    border-radius: 6px; 
+    margin-top: 0px;
+    object-fit: cover;
+    background-color: white;
+  }
   .item-box {
     position: relative; 
     overflow: hidden; 
@@ -37,6 +43,10 @@
     transform: scale(1.02); 
     box-shadow: 0 8px 16px rgba(148, 148, 148, 0.3);
   }
+  .item-box {
+    border-radius: 50;
+  }
+  
   
   .item-image {
     
