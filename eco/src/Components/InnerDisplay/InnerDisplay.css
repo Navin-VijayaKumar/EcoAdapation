@@ -136,42 +136,77 @@
 
   }
   
-  
   .popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for better focus */
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000; /* Ensure it's on top of everything */
   }
   
   .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 400px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 500px;
+    max-width: 90%; /* Ensure popup is responsive */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
     text-align: center;
-    height: 350px;
-  /* //  gap:20px; */
+    position: relative; /* For positioning close button */
   }
   
   textarea {
     width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-  .button{
-    padding: 50p;
-    white-space: 50px;
-  
-
-  }
-  html {
-    scroll-behavior: smooth;
+    height: 120px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical; /* Allow users to resize the textarea vertically */
   }
   
+  .button {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Add gap between buttons */
+  }
+  
+  .b1, .b2 {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .b1 {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .b2 {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .b1:hover {
+    background-color: #218838;
+  }
+  
+  .b2:hover {
+    background-color: #c82333;
+  }
+  .all{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    flex-direction: row;
+  }
