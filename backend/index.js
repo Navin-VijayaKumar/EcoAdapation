@@ -27,8 +27,7 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: 'navinv.22cse@kongu.edu', // Use your actual email
         pass: '9788665770', // Use an app password if 2FA is enabled
-    },
-    secure: true, // Use true if you're using the secure SMTP server
+    }
 });
 
 // Multer storage for file uploads
@@ -37,11 +36,12 @@ const storage = multer.diskStorage({
         cb(null, './upload/images');  // Set the destination folder for image uploads
     },
     filename: (req, file, cb) => {
+        // Use a unique filename format
         cb(null, `image_${Date.now()}${path.extname(file.originalname)}`);
     }
 });
 
-// File filter to only allow specific image formats
+// File filter to only allow specific image formats (e.g., .png, .jpg, .jpeg)
 const fileFilter = (req, file, cb) => {
     const fileTypes = /jpeg|jpg|png|gif/;
     const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
@@ -73,30 +73,23 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 // Root route
 app.get("/", (req, res) => {
-    res.send("express app is running");
-    console.log("express app is running");
+    res.send("Express app is running");
+    console.log("Express app is running");
 });
 
 // Send Email Route
 app.post('/send-email', (req, res) => {
-    const { to, subject, productId } = req.body;
+    const { to, subject, text, productId } = req.body;  
+    console.log("Sending email to:", to);
 
     const mailOptionsUser = {
         from: 'navinv.22cse@kongu.edu',
-        to,
+        to,  // Email from the request
         subject,
-        text: `
-            Adoption Inquiry Details:
-            ---------------------------------------
-            Product ID: ${productId}
-            Date: ${req.body.date || 'N/A'}
-            Email: ${req.body.email || 'N/A'}
-            Contact Number: ${req.body.contactNumber || 'N/A'}
-            Description: ${req.body.description || 'N/A'}
-            ---------------------------------------
-        `,
+        text,
     };
-
+    
+    // Admin email configuration
     const mailOptionsAdmin = {
         from: 'navinv.22cse@kongu.edu',
         to: 'navinv.22cse@kongu.edu',
@@ -107,17 +100,18 @@ app.post('/send-email', (req, res) => {
     // Send email to the user
     transporter.sendMail(mailOptionsUser, (error, info) => {
         if (error) {
-            console.error('Error sending email:', error.message);
-            console.error(error.stack);
+            console.error('Error sending email:', error);
             return res.status(500).json({ success: false, message: 'Error sending email', error });
         }
+        console.log('Email sent to user:', info.response);
 
         // Send notification email to the admin
         transporter.sendMail(mailOptionsAdmin, (adminError, adminInfo) => {
             if (adminError) {
-                console.error('Error sending notification email to admin:', adminError.message);
+                console.error('Error sending notification email to admin:', adminError);
                 return res.status(500).json({ success: false, message: 'Error sending notification email', adminError });
             }
+            console.log('Notification email sent to admin:', adminInfo.response);
             res.json({ success: true, message: 'Email sent successfully' });
         });
     });

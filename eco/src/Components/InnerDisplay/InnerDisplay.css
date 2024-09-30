@@ -210,3 +210,19 @@
     padding: 50px;
     flex-direction: row;
   }
+  .content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    margin: 40px;
+    
+  }
+  .content input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    margin: 6px;
+  }

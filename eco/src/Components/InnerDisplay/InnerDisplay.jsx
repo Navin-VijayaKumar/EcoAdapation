@@ -4,8 +4,11 @@ import './InnerDisplay.css';
 const InnerDisplay = (props) => {
   const { product } = props; 
   const [showPopup, setShowPopup] = useState(false);
+  const [emailBody, setEmailBody] = useState('');
   const [date, setDate] = useState('');
-  const [email, setEmail] = useState('');
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [description, setDescription] = useState('');
 
@@ -14,40 +17,34 @@ const InnerDisplay = (props) => {
   };
 
   const handleSendEmail = async () => {
-    if (!email || !date || !contactNumber) {
-      alert('Please fill out all the required fields.');
-      return;
-    }
+
+    const bodyContent = `
+      Pick-up Date: ${date}-${month}-${year}
+      Contact Number: ${contactNumber}
+      Email: ${userEmail}
+      Pet ID: ${product?.id}
+      Description: ${description}
+    `;
+
+    // Set the constructed body content as the emailBody
+    setEmailBody(bodyContent);
 
     const emailData = {
-      to: product?.Email,  // Ensure this is the recipient's email address
+      to: product?.Email,  
       subject: 'Adoption Inquiry',
-      productId: product?.id,
-      date,  
-      email,  
-      contactNumber,  
-      description,
+      text: bodyContent,  
+      productId: product?.id, 
     };
 
-    if (!emailData.to) {
-      alert('The recipient email address is missing.');
-      return;
-    }
-
     try {
-      const response = await fetch('http://localhost:4000/send-email', {
+      await fetch('http://localhost:4000/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(emailData),  // Send the form data
+        body: JSON.stringify(emailData),
       });
-
-      if (response.ok) {
-        alert('Email sent successfully!');
-      } else {
-        alert('Failed to send email.');
-      }
+      alert('Email sent successfully!');
     } catch (error) {
       console.error('Error sending email:', error);
       alert('Failed to send email.');
@@ -97,48 +94,46 @@ const InnerDisplay = (props) => {
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
-            <h3>Pet Adoption Inquiry</h3>
-            
-            <div className="all">
-              <div>
-                <label>Date:</label>
-                <input 
-                  type="date" 
-                  value={date} 
-                  onChange={(e) => setDate(e.target.value)} 
-                />
-              </div>
+            <h3>Pet Ordering Details</h3>
+         
+           <div className="content">
 
-              <div>
-                <label>Email:</label>
-                <input 
-                  type="email" 
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)} 
-                />
-              </div>
-
-              <div>
-                <label>Contact Number:</label>
-                <input 
-                  type="tel" 
-                  placeholder="Enter your contact number" 
-                  value={contactNumber}
-                  onChange={(e) => setContactNumber(e.target.value)} 
-                />
-              </div>
-            </div>
-
-            <div>
-              <label>Description:</label>
-              <textarea 
-                placeholder="Provide details..." 
-                value={description} 
-                onChange={(e) => setDescription(e.target.value)} 
+            <input 
+              type="text" 
+              placeholder="Enter Date (DD)" 
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
+            <input 
+              type="text" 
+              placeholder="Enter Month (MM)" 
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+            />
+            <input 
+              type="text" 
+              placeholder="Enter Year (YYYY)" 
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+            />
+            <input 
+              type="email" 
+              placeholder="Enter Your Email" 
+              value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+            />
+            <input 
+              type="text" 
+              placeholder="Enter Contact Number" 
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}
               />
-            </div>
-
+              </div>
+            <textarea
+              placeholder="Write additional description here..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              />
             <div className="button">
               <button className='b1' onClick={handleSendEmail}>Place Order</button>
               <button className='b2' onClick={() => setShowPopup(false)}>Cancel</button>
