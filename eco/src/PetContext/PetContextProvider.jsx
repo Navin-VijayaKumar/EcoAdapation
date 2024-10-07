@@ -7,7 +7,7 @@ const PetContextProvider = (props) => {
   const [all_product, setall_product] = useState([]);
 
   useEffect(() => {
-    fetch("https://ecoadapation-backend.onrender.com")
+    fetch("https://ecoadapation-backend.onrender.com/allproducts")
       .then((response) => response.json())
       .then((data) => setall_product(data))
       .catch((error) => console.error('Error fetching products:', error));
