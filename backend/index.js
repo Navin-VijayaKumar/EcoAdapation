@@ -64,7 +64,7 @@ app.use("/images", express.static('upload/images'));
 
 app.post('/upload', upload.single('image'), (req, res) => {
     if (req.file) {
-        const image_url = `http://localhost:4000/images/${req.file.filename}`;
+        const image_url = `https://ecoadapation-backend.onrender.com/images/${req.file.filename}`;
         return res.json({ success: true, image_url });
     } else {
         return res.status(400).json({ success: false, message: "Image upload failed" });
