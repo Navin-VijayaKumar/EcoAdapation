@@ -1,18 +1,100 @@
-
-.responsive-background {
-   
-    background-size: cover;   
-    background-position: center; 
-    background-repeat: no-repeat; 
-    width: 100vw; 
-    height: 100vh; 
+.all1{
+ 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.background-image {
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
   }
   
-  .responsive-background .content {
-    color: white; 
-    text-align: center; 
+.master {
+    display: flex;
+    gap: 1rem;
+    height: 300px;
+    width: 95%;
+  }
+  
+  .master > div {
+    flex: 1;
+    transition: all 1s ease;
+    border-style: solid;
+    border-color: rgb(155, 147, 147);
+    overflow: hidden; 
+  }
+  
+  .master > div:nth-child(1) {
+    background-image: url("./asserts/ani1.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .master  div:nth-child(2) {
+    background-image: url("./asserts/ani2.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .master  div:nth-child(3) {
+    background-image: url("./asserts/ani3.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .master  div:nth-child(4) {
+    background-image: url("./asserts/ani4.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+  .master  div:hover {
+    flex: 3; 
+  }
+  .title1{
+  
+      text-align: center;
+   font-size: 33px;
+      margin: 0;
+      
+      background-image: url("./asserts/aniff.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+      background-clip: text;
+      
+  
+
+  }
+  .title2{
+  
+    text-align: center;
+ font-size: 33px;
+  color: black;
+    
+
+
+}
+  .title1 img{
+    width: 50px;
+
+  }
+  .animations {
+    width: 600px;
+    height: 400px;
+    background-size: 100% 100%;
+    box-shadow: 20px 20px 10px gray;
+    animation: slider 10s linear infinite;
+  }
+  
+  @keyframes slider {
+    0% { background-image: url('./asserts/anis1.jpg'); }
+    25% { background-image: url('./asserts/anis2.jpg'); }
+    50% { background-image: url('./asserts/anis3.jpg'); }
+    60% { background-image: url('./asserts/san.jpg'); }
+    100% { background-image: url('./asserts/anis1.jpg'); } 
   }
   

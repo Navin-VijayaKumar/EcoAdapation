@@ -178,7 +178,9 @@ const AddProduct = () => {
           <input
             value={productDetails.PhoneNumber}
             onChange={changeHandler}
-            type="text"
+            type="number"
+            required
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             name="PhoneNumber"
             placeholder="Enter Phone Number"
           />
@@ -189,7 +191,7 @@ const AddProduct = () => {
           <input
             value={productDetails.Email}
             onChange={changeHandler}
-            type="text"
+            type="email"
             name="Email"
             placeholder="Enter Email"
           />
