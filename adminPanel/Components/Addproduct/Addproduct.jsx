@@ -57,7 +57,7 @@ const AddProduct = () => {
       if (responseData.success) {
         const product = { ...productDetails, image: responseData.image_url };
 
-        const productResponse = await fetch('http://localhost:4000/addproduct', {
+        const productResponse = await fetch("https://ecoadapation-backend.onrender.com", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
