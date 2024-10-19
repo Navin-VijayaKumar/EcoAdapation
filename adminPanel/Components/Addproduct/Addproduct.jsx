@@ -48,7 +48,7 @@ const AddProduct = () => {
     formData.append('District', productDetails.District);
 
     try {
-      const uploadResponse = await fetch('https://ecoadapation-backend.onrender.com/upload', {
+      const uploadResponse = await fetch('http://localhost:4000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -57,7 +57,7 @@ const AddProduct = () => {
       if (responseData.success) {
         const product = { ...productDetails, image: responseData.image_url };
 
-        const productResponse = await fetch("https://ecoadapation-backend.onrender.com/addproduct", {
+        const productResponse = await fetch('http://localhost:4000/addproduct', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -178,9 +178,7 @@ const AddProduct = () => {
           <input
             value={productDetails.PhoneNumber}
             onChange={changeHandler}
-            type="number"
-            required
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            type="text"
             name="PhoneNumber"
             placeholder="Enter Phone Number"
           />
@@ -191,7 +189,7 @@ const AddProduct = () => {
           <input
             value={productDetails.Email}
             onChange={changeHandler}
-            type="email"
+            type="text"
             name="Email"
             placeholder="Enter Email"
           />

@@ -6,11 +6,11 @@
     flex-direction: column;
 }
 .background-image {
-    background-size: cover; /* Ensures the image covers the entire background */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    width: 100vw; 
+    height: 100vh; 
   }
   
 .master {
@@ -94,7 +94,7 @@
     0% { background-image: url('./asserts/anis1.jpg'); }
     25% { background-image: url('./asserts/anis2.jpg'); }
     50% { background-image: url('./asserts/anis3.jpg'); }
-    60% { background-image: url('./asserts/san.jpg'); }
+    60% { background-image: url('./asserts/anis4.jpg'); }
     100% { background-image: url('./asserts/anis1.jpg'); } 
   }
   
