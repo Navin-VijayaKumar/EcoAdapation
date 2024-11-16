@@ -26,7 +26,6 @@ const InnerDisplay = (props) => {
       Description: ${description}
     `;
 
-    // Set the constructed body content as the emailBody
     setEmailBody(bodyContent);
 
     const emailData = {
