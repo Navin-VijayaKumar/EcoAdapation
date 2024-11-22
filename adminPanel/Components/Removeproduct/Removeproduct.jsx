@@ -35,7 +35,7 @@ const RemoveProduct = () => {
         throw new Error(`Failed to remove product with id ${id}`);
       }
 
-      await fetchInfo();  // Refresh the product list after removal
+      await fetchInfo(); 
     } catch (err) {
       console.error(`Error removing product with id ${id}:`, err);
       setError(`Error removing product with id ${id}`);

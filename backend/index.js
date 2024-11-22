@@ -12,10 +12,10 @@ const port = 4000;
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://navinv:9788665770@cluster0.27dbj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+
+
+mongoose.connect('mongodb+srv://navinv:9788665770@cluster0.rgu11.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+
 
 mongoose.connection.on("connected", () => {
     console.log("Connected to MongoDB");
