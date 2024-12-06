@@ -49,18 +49,9 @@ const RemoveProduct = () => {
   return (
     <div className="listproduct">
       <h1>All Pet List</h1>
-      {error && <p className="error-message">{error}</p>} {/* Display any errors */}
+      {error && <p className="error-message">{error}</p>} 
       <div className="listproduct-format-main">
-        {/* <p>Name</p> */}
-        {/* <p>Title</p> */}
-        {/* <p>Age</p>
-        <p>State</p>
-        <p>District</p>
-        <p>Remove</p> */}
-        {/* <p>Vareity : {props.name}</p>
-      <p>Age : {props.age}</p>
-      <p>State : {props.state}</p>
-      <p>District : {props.District}</p> */}
+      
       </div>
       <div className="list-all-product">
         <hr />
