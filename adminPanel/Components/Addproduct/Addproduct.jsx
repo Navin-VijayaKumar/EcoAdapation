@@ -67,16 +67,16 @@ const AddProduct = () => {
 
         const result = await productResponse.json();
         if (result.success) {
-          alert("Product added successfully");
+          alert("Pet Details added successfully");
         } else {
-          alert("Failed to add product");
+          alert("Failed to add Pet Details");
         }
       } else {
         alert("Failed to upload image");
       }
     } catch (error) {
       console.error("Error:", error);
-      alert("An error occurred while adding the product.");
+      alert("An error occurred while adding the pet.");
     } finally {
       setIsLoading(false); 
     }
@@ -93,6 +93,7 @@ const AddProduct = () => {
             type="text"
             name="id"
             placeholder="Enter ID"
+            required
           />
         </div>
 
@@ -116,6 +117,7 @@ const AddProduct = () => {
             type="text"
             name="age"
             placeholder="Enter Age"
+            required
           />
         </div>
 
@@ -127,6 +129,7 @@ const AddProduct = () => {
             type="text"
             name="address"
             placeholder="Enter Address"
+            required
           />
         </div>
 
@@ -137,6 +140,7 @@ const AddProduct = () => {
             onChange={changeHandler}
             name="state"
             className="selector"
+            required
           >
             <option value="Tamil Nadu">Tamil Nadu</option>
             <option value="Kerala">Kerala</option>
@@ -163,6 +167,7 @@ const AddProduct = () => {
             value={productDetails.category}
             onChange={changeHandler}
             name="category"
+            required
             className="selector"
           >
             <option value="">Select Category</option>
@@ -181,6 +186,7 @@ const AddProduct = () => {
             type="text"
             name="PhoneNumber"
             placeholder="Enter Phone Number"
+            required
           />
         </div>
 
@@ -192,6 +198,7 @@ const AddProduct = () => {
             type="text"
             name="Email"
             placeholder="Enter Email"
+            required
           />
         </div>
 
@@ -203,6 +210,7 @@ const AddProduct = () => {
             type="text"
             name="District"
             placeholder="Enter District"
+            required
           />
         </div>
 
@@ -218,6 +226,7 @@ const AddProduct = () => {
             name="image"
             id="file-input"
             hidden
+            required
           />
         </div>
 

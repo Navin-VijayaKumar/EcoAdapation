@@ -84,15 +84,15 @@ app.post('/send-email', (req, res) => {
 
     const mailOptionsUser = {
         from: 'navinv.22cse@kongu.edu',
-        to,  // Email from the request
+        to,  // User email from the request
         subject,
         text,
     };
     
-    // Admin email configuration
+    // Admin email configuration with a default email
     const mailOptionsAdmin = {
         from: 'navinv.22cse@kongu.edu',
-        to: 'navinv.22cse@kongu.edu',
+        to: 'navinv.22cse@kongu.edu', // Replace with your default admin email
         subject: `New Adoption for a pet order has been placed, for PET ID: ${productId}`,
         text: `An order has been sent to ${to} regarding pet adoption and the PET ID: ${productId}.`,
     };
@@ -100,7 +100,7 @@ app.post('/send-email', (req, res) => {
     // Send email to the user
     transporter.sendMail(mailOptionsUser, (error, info) => {
         if (error) {
-            console.error('Error sending email:', error);
+            console.error('Error sending email to user:', error);
             return res.status(500).json({ success: false, message: 'Error sending email', error });
         }
         console.log('Email sent to user:', info.response);
@@ -112,7 +112,7 @@ app.post('/send-email', (req, res) => {
                 return res.status(500).json({ success: false, message: 'Error sending notification email', adminError });
             }
             console.log('Notification email sent to admin:', adminInfo.response);
-            res.json({ success: true, message: 'Email sent successfully' });
+            res.json({ success: true, message: 'Emails sent successfully' });
         });
     });
 });
