@@ -7,7 +7,6 @@ const AllCategory = () => {
   const { all_product } = useContext(PetContext);  // Destructure to get all_product from context
   const [selectedState, setSelectedState] = useState(''); 
 
-  console.log(all_product);  // Check if data is being fetched properly
 
   const filteredPets = selectedState 
     ? all_product.filter(pet => pet.state === selectedState)  // Use all_product here

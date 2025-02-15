@@ -1,5 +1,5 @@
 import React from 'react';
-import banner2 from './asserts/banner2.jpg'; 
+import banner2 from '../Assets2/asserts/banner2.jpg'; 
 import './Home.css';
 
 
@@ -8,9 +8,9 @@ import './Home.css';
 function Home() {
   return (
     <div className="all1">
-      <div className="ine">
+      <div className="line">
         
-        <img src={banner2} alt="Background" className="background-image" />
+        <img src={banner2} alt="Background" className="backgroundImage" />
 
       </div>
       <div className="title1">
@@ -22,13 +22,8 @@ function Home() {
           <div></div>
           <div></div>
       </div>
-     <div className="title2">
-
-        <h1>Adopt a pet today</h1>
-     </div>
-        <div className="animations">
-          
-        </div>
+     
+        
       
       </div>
 

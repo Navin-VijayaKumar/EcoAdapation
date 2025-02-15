@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <div className='all'>
    
-        <ul className='menu-title'>
+        <ul className='menu-title' id='nav-list'>
           <li onClick={()=>(setMenu("Home"))}><Link style={{textDecoration:'none'}} to='/home'>Home</Link> {menu=="Home"?<hr/>:<></>}</li>
           <li onClick={()=>(setMenu("All"))}><Link style={{textDecoration:'none'}} to='/All'>All</Link> {menu=="All"?<hr/>:<></>}</li>
 

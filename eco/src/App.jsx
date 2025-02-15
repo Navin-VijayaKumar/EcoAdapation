@@ -1,7 +1,8 @@
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './Pages/Assets2/Home';
+
+import Home from './Pages/Home/Home';
 import Pets from './Pages/Assets2/Pets';
 import PetsCategory from './Pages/Assets2/PetsCategory';
 import PetContextProvider from './PetContext/PetContextProvider'; // Import the provider
