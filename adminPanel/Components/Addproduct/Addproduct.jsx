@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Addproduct.css';
 import up from './Assets/up.png';
+import bgpa1 from './Assets/bgpa1.jpg';
 
 const AddProduct = () => {
   const [productDetails, setProductDetails] = useState({
@@ -84,6 +85,7 @@ const AddProduct = () => {
 
   return (
     <div className="addproduct">
+    
       <div className="addproduct-items">
         <div className="addproduct-field">
           <p>Pet ID</p>
@@ -275,7 +277,7 @@ const AddProduct = () => {
           className="addproduct-button"
           disabled={isLoading}
         >
-          {isLoading ? "Adding..." : "Add"}
+          {isLoading ? "Adding..." : "ADD"}
         </button>
         </div>
       </div>

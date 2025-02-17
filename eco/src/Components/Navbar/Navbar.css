@@ -10,54 +10,48 @@
     color: inherit;
   }
   
-  .all {
+  .all2 {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
+    flex-direction: row;
     align-items: center;
-    padding: 15px 8%;
-    background-color: #2d2d2d;
+    background-color: #effafb;
     font-size: 18px;
+    padding-right: 20px;
     font-family: monospace;
 
   }
+  .com-icon{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    padding: 30px;
+    gap: 20px;
+  }
   
-  .all ul {
-    padding: 10px 30px;
+  .all2 ul {
+    padding: 1px 30px;
     border-radius: 30px;
-    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
 
   }
   
-  .all ul li {
+  .all2 ul li {
     display: inline-block;
-    padding: 5px 10px;
     margin: 0 10px;
     color: #ffffcc;
-    text-shadow: 0 0 5px #fff,
     
 
       
   }
   
-  .all img {
+  .all2 img {
     width: 50px;
     height: 50px;
   }
   
-.all{
-  display: flex;
-  padding: -1% -1%;
-  justify-content: space-between;
-  align-items: center;
 
-}
-
-.all{
-  flex: 1;
-  text-align: right;
-
-}
-.alg {
+.alg2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,32 +60,27 @@
   font-size: 16px;
 }
 #nav-list{
-    background-color: #333633;
-    border: 2px solid rgb(13, 0, 255);
-}
+    background-color: #d1cfcf;
+  }
 
-.alg ul {
-  padding: 10px 30px;
-  border-radius: 30px;
-  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.1);
-}
 
-.all ul li{
+
+.all2 ul li{
   list-style: none;
   display: inline-block;
-  padding: 8px 14px;
+  padding: 15px 4px;
   position: relative;
 }
-.all ul li a{
-  color: rgb(71, 75, 72);
+.all2 ul li a{
+  color: rgb(0, 0, 0);
   text-decoration:none ;
   font-size: 19px;
 }
-.all ul li::after{
+.all2 ul li::after{
   content: '';
   width: 0%;
   height: 2px;
-  background: rgb(0, 42, 255);
+  background: rgb(0, 0, 0);
   display: block;
   margin: auto;
   transition: 0.5s ;
@@ -101,24 +90,28 @@
 
 }
   
-  .button {
-    padding: 8px 16px;
-    background-color: #2200ff;
+  .button102 button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #002fff;
     color: #ffffff;
     border: none;
     border-radius: 5px;
+    transition: 0.5s;
     cursor: pointer;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+    width: 65px;
   }
   
-  .button:hover {
+  .button102 button:hover {
     background-color: #0056b3;
+    border-radius: 40%;
 
   }
-  .button:active{
-    border-radius: 50%;
-    transition: 0;
 
-  }
   .title{
     display: flex;
     flex-direction: row;
@@ -161,6 +154,9 @@ border: none;
 width: 80%;
 height: 3px;
 border-radius: 10px;
-background-color: rgb(0, 0, 0);
 
+}
+.com-title h2{
+  font-family: monospace;
+  font-size: 30px;
 }

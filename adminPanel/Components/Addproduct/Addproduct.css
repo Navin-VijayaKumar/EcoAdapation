@@ -1,18 +1,21 @@
 .addproduct {
+    position: relative;
     box-sizing: border-box;
     width: 100%;
     max-width: 500px;
     padding: 10px 10px; 
     margin: 0 auto;
     border-radius: 6px;
-    background: rgb(171, 171, 171);
+    background-image: url("./Assets/bgpa1.jpg");  /* Ensure the correct path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
+    margin-top: 40px;
     justify-content: center;
-    
-  /* height: 80px; */
-
 }
+
 .addproduct-items {
     width: 100%;
     color: rgb(0, 0, 0);
@@ -22,12 +25,14 @@
 
 .addproduct-field {
     display: flex;
-    flex-direction: column; /* Stack label and input vertically */
-    margin-bottom: 20px; /* Add spacing between fields */
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px; 
 }
 
 .addproduct-field p {
-    margin: 0 0 5px 0; /* Adjust margin to position label above input */
+    margin: 0 0 5px 0; 
 }
 
 .addproduct-field input,
@@ -46,17 +51,22 @@
 }
 
 .addproduct-image {
-    height: 120px;
-    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
     border-radius: 10px;
     object-fit: contain;
     margin: 20px 0px;
 }
 
-.imaged {
+.imaged img{
+    position: absolute;
+    left: 40px;
     padding: 30px;
-    height: 60px;
-    width: 60px;
+    height: 90px;
+    width: 90px;
 }
 
 .addproduct-button {
@@ -64,7 +74,7 @@
     width: 160px;
     height: 60px;
     border-radius: 6px;
-    background: aquamarine;
+    background: rgb(195, 139, 65);
     border: none;
     color: rgb(0, 0, 0);
     cursor: pointer;
@@ -73,8 +83,8 @@
 }
 
 .addproduct-button:hover {
-    background-color: aqua;
-    color: rgb(31, 0, 141);
+    background-color: rgb(233, 155, 78);
+    color: rgb(255, 255, 255);
 }
 .addproduct-field{
     display: flex;

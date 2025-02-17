@@ -1,13 +1,18 @@
 .displayProduct {
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0px 170px;
-    flex-wrap: wrap; /* Ensure elements wrap on smaller screens */
+    flex-wrap: wrap; 
+    gap: 50px;
 }
 
 .main-image {
     width: 586px;
     height: 700px;
-    object-fit: cover; /* Ensure the image covers the area properly */
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
 }
 
 .display-Right {
@@ -80,6 +85,8 @@
 .details {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    margin-top: 80px;
   }
   
   .details div {
@@ -107,6 +114,7 @@
     color: rgb(255, 255, 255);
     width: 150px;
     border-width: 2.5px;
+    margin-left: 100px;
 
   }
   .submit:hover{
@@ -123,12 +131,19 @@
   .details {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    padding-top: 40px;
+    background-color: rgb(239, 252, 252);
+    padding-left: 70px;
+    height: 500px;
+    border: 2px solid black;
+    border-radius: 16px;
   }
   
   .details-item {
     display: flex;
     margin-bottom: 10px;
-    background-color: rgb(224, 252, 252);
     border-color: rgb(0, 0, 0);
     border-width: 2.5px;
     border-radius: 6px;
@@ -171,7 +186,7 @@
     resize: vertical; /* Allow users to resize the textarea vertically */
   }
   
-  .button {
+  .button1 {
     display: flex;
     justify-content: space-between;
     gap: 10px; /* Add gap between buttons */

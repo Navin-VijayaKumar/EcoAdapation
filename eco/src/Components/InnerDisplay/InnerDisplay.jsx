@@ -85,9 +85,9 @@ const InnerDisplay = (props) => {
           <div className="details-item">
             <h2>District:</h2><p>{product?.District}</p>
           </div>
+        <button className='submit' onClick={handleAdoptClick}>Adopt</button>
         </div>
 
-        <button className='submit' onClick={handleAdoptClick}>Adopt</button>
       </div>
 
       {showPopup && (
@@ -133,7 +133,7 @@ const InnerDisplay = (props) => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               />
-            <div className="button">
+            <div className="button1">
               <button className='b1' onClick={handleSendEmail}>Place Order</button>
               <button className='b2' onClick={() => setShowPopup(false)}>Cancel</button>
             </div>

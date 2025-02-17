@@ -1,0 +1,17 @@
+.save-all{
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    padding: 10px 10px; 
+    margin: 0 auto;
+    border-radius: 6px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: center;
+
+}

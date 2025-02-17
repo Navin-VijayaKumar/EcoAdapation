@@ -1,7 +1,7 @@
 import './App.css'
 import Navbar from './Components/Navbar/Navbar'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import Footer from './Components/Footer/Footer';
 import Home from './Pages/Home/Home';
 import Pets from './Pages/Assets2/Pets';
 import PetsCategory from './Pages/Assets2/PetsCategory';
@@ -26,6 +26,7 @@ function App() {
             <Route path='/Save_me' element={<Save_me />} />
             <Route path="/pets/:productID" element={<Pets />} />
           </Routes>
+          <Footer></Footer>
         </BrowserRouter>
       </PetContextProvider>
     </>
