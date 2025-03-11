@@ -36,7 +36,7 @@ const InnerDisplay = (props) => {
     };
 
     try {
-      await fetch('http://localhost:4000/send-email', {
+      await fetch('https://eco-adapation.onrender.com/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
